@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iniciar sesión - NEXO</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="encabezado">
+    <nav class="barra-navegacion contenedor" aria-label="Navegación principal">
+      <a href="index.html" class="logo-nexo">NEXO</a>
+
+      <ul class="menu-principal">
+        <li><a href="index.html">Inicio</a></li>
+        <li class="enlace-privado"><a href="amigos.html"> Agregar amigos</a></li>
+        <li class="enlace-privado"><a href="chat.html"> Chats</a></li>
+        <li class="enlace-privado"><a href="perfil.html"> Editar perfil</a></li>
+      </ul>
+
+      <ul class="botones-encabezado">
+        <li class="enlace-invitado"><a href="login.html" class="boton boton-secundario boton-pequeno activo">Iniciar sesión</a></li>
+        <li class="enlace-invitado"><a href="registro.html" class="boton boton-primario boton-pequeno">Crear cuenta</a></li>
+        <li class="enlace-privado"><a href="#" id="cerrar-sesion" class="boton boton-primario boton-pequeno">Cerrar sesión</a></li>
+      </ul>
+
+      <button class="boton-menu-movil" aria-label="Abrir menú">&#9776;</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="seccion-formulario">
+      <div class="tarjeta-formulario">
+        <a href="index.html" class="logo-nexo">NEXO</a>
+        <h1>Iniciar sesión</h1>
+
+        <form id="formulario-login" novalidate>
+          <div class="campo-formulario">
+            <label for="correo-login">Correo electrónico</label>
+            <input type="email" id="correo-login" name="correo">
+            <p class="mensaje-error" id="error-correo-login"></p>
+          </div>
+
+          <div class="campo-formulario">
+            <label for="clave-login">Contraseña</label>
+            <input type="password" id="clave-login" name="clave">
+            <p class="mensaje-error" id="error-clave-login"></p>
+          </div>
+
+          <button type="submit" class="boton boton-primario boton-bloque">Iniciar sesión</button>
+        </form>
+
+        <p class="enlace-alterno">¿No tienes una cuenta? <a href="registro.html">Crea una</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="pie-pagina">
+    <div class="contenedor">
+      <p class="logo-nexo">NEXO</p>
+      <p>"Haz amigos en tu liceo"</p>
+      <p>&copy; 2026 NEXO. Proyecto escolar de demostración.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

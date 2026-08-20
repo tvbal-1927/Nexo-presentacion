@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buscar amigos - NEXO</title>
+  <link rel="stylesheet" href="style.css">
+
+  <script>
+    // Esta página es privada: solo se puede ver con sesión iniciada.
+    // localStorage es una solución simple para un proyecto escolar de
+    // demostración; en una página real esta comprobación se haría
+    // validando la sesión en un servidor.
+    if (localStorage.getItem("nexoSesionIniciada") !== "true") {
+      window.location.href = "login.html";
+    }
+  </script>
+</head>
+<body>
+
+  <header class="encabezado">
+    <nav class="barra-navegacion contenedor" aria-label="Navegación principal">
+      <a href="index.html" class="logo-nexo">NEXO</a>
+
+      <ul class="menu-principal">
+        <li><a href="index.html">Inicio</a></li>
+        <li class="enlace-invitado"><a href="amigos.html">Buscar</a></li>
+        <li class="enlace-privado"><a href="amigos.html" class="activo">👥 Agregar amigos</a></li>
+        <li class="enlace-privado"><a href="chat.html">💬 Chats</a></li>
+        <li class="enlace-privado"><a href="perfil.html">👤 Editar perfil</a></li>
+      </ul>
+
+      <ul class="botones-encabezado">
+        <li class="enlace-invitado"><a href="login.html" class="boton boton-secundario boton-pequeno">Iniciar sesión</a></li>
+        <li class="enlace-invitado"><a href="registro.html" class="boton boton-primario boton-pequeno">Crear cuenta</a></li>
+        <li class="enlace-privado"><a href="#" id="cerrar-sesion" class="boton boton-primario boton-pequeno">🚪 Cerrar sesión</a></li>
+      </ul>
+
+      <button class="boton-menu-movil" aria-label="Abrir menú">&#9776;</button>
+    </nav>
+  </header>
+
+  <main class="contenido-interno">
+    <div class="contenedor">
+      <h1>Busca nuevos amigos</h1>
+      <p class="subtitulo-pagina">Estos son algunos estudiantes de tu liceo. Añade a quienes compartan tus intereses.</p>
+
+      <section id="lista-perfiles" class="lista-perfiles" aria-label="Perfiles de estudiantes">
+        <!-- Las tarjetas de usuarios se generan con JavaScript -->
+      </section>
+
+      <section class="seccion-mis-amigos" id="mis-amigos" aria-label="Mis amigos">
+        <h2>Mis amigos</h2>
+        <div id="lista-mis-amigos" class="lista-mis-amigos">
+          <!-- La lista de amigos se genera con JavaScript -->
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="pie-pagina">
+    <div class="contenedor">
+      <p class="logo-nexo">NEXO</p>
+      <p>"Haz amigos en tu liceo"</p>
+      <p>&copy; 2026 NEXO. Proyecto escolar de demostración.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

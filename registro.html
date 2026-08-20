@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crear cuenta - NEXO</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="encabezado">
+    <nav class="barra-navegacion contenedor" aria-label="Navegación principal">
+      <a href="index.html" class="logo-nexo">NEXO</a>
+
+      <ul class="menu-principal">
+        <li><a href="index.html">Inicio</a></li>
+        <li class="enlace-privado"><a href="amigos.html"> Agregar amigos</a></li>
+        <li class="enlace-privado"><a href="chat.html">Chats</a></li>
+        <li class="enlace-privado"><a href="perfil.html"> Editar perfil</a></li>
+      </ul>
+
+      <ul class="botones-encabezado">
+        <li class="enlace-invitado"><a href="login.html" class="boton boton-secundario boton-pequeno">Iniciar sesión</a></li>
+        <li class="enlace-invitado"><a href="registro.html" class="boton boton-primario boton-pequeno activo">Crear cuenta</a></li>
+        <li class="enlace-privado"><a href="#" id="cerrar-sesion" class="boton boton-primario boton-pequeno"> Cerrar sesión</a></li>
+      </ul>
+
+      <button class="boton-menu-movil" aria-label="Abrir menú">&#9776;</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="seccion-formulario">
+      <div class="tarjeta-formulario">
+        <a href="index.html" class="logo-nexo">NEXO</a>
+        <h1>Crea tu cuenta</h1>
+
+        <p class="mensaje-confirmacion" id="mensaje-exito-registro"></p>
+        <p class="mensaje-error" id="error-general-registro"></p>
+
+        <form id="formulario-registro" novalidate>
+          <div class="fila-doble">
+            <div class="campo-formulario">
+              <label for="nombre-registro">Nombre</label>
+              <input type="text" id="nombre-registro" name="nombre">
+            </div>
+            <div class="campo-formulario">
+              <label for="apellido-registro">Apellido</label>
+              <input type="text" id="apellido-registro" name="apellido">
+            </div>
+          </div>
+
+          <div class="campo-formulario">
+            <label for="edad-registro">Edad</label>
+            <input type="number" id="edad-registro" name="edad" min="12" max="20">
+            <p class="mensaje-error" id="error-edad-registro"></p>
+          </div>
+
+          <div class="campo-formulario">
+            <label for="correo-registro">Correo institucional</label>
+            <input type="email" id="correo-registro" name="correo" placeholder="nombre@alumnos.sip.cl">
+            <p class="mensaje-error" id="error-correo-registro"></p>
+          </div>
+
+          <div class="fila-doble">
+            <div class="campo-formulario">
+              <label for="clave-registro">Contraseña</label>
+              <input type="password" id="clave-registro" name="clave">
+            </div>
+            <div class="campo-formulario">
+              <label for="confirmar-clave-registro">Confirmar contraseña</label>
+              <input type="password" id="confirmar-clave-registro" name="confirmarClave">
+            </div>
+          </div>
+          <p class="mensaje-error" id="error-clave-registro"></p>
+
+          <div class="campo-formulario">
+            <label for="liceo-registro">Liceo</label>
+            <input type="text" id="liceo-registro" name="liceo">
+          </div>
+
+          <div class="campo-formulario">
+            <label for="curso-registro">Curso</label>
+            <input type="text" id="curso-registro" name="curso" placeholder="Ej: 3° medio">
+          </div>
+
+          <button type="submit" class="boton boton-primario boton-bloque">Crear cuenta</button>
+        </form>
+
+        <p class="enlace-alterno">¿Ya tienes una cuenta? <a href="login.html">Inicia sesión</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="pie-pagina">
+    <div class="contenedor">
+      <p class="logo-nexo">NEXO</p>
+      <p>"Haz amigos en tu liceo"</p>
+      <p>&copy; 2026 NEXO. Proyecto escolar de demostración.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

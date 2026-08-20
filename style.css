@@ -1,0 +1,866 @@
+/* =========================================================
+   NEXO - Hoja de estilos principal
+   Proyecto escolar - CSS puro (sin frameworks)
+   ========================================================= */
+
+/* ---------- Reset básico ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+/* ---------- Variables de color ----------
+   Paleta propia de NEXO inspirada ligeramente
+   en tonos cálidos, pero con identidad propia.
+------------------------------------------------ */
+:root {
+  --color-coral: #ff6b5e;
+  --color-rosa: #ff9472;
+  --color-rojo: #e94057;
+  --color-negro: #211a1d;
+  --color-gris-oscuro: #4a4a4a;
+  --color-gris-claro: #f2f2f2;
+  --color-blanco: #ffffff;
+  --degradado-nexo: linear-gradient(135deg, var(--color-rojo), var(--color-coral), var(--color-rosa));
+  --sombra-suave: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --sombra-fuerte: 0 8px 20px rgba(233, 64, 87, 0.25);
+  --borde-redondo: 16px;
+}
+
+body {
+  font-family: 'Segoe UI', Verdana, sans-serif;
+  background-color: var(--color-gris-claro);
+  color: var(--color-negro);
+  line-height: 1.5;
+}
+
+/* ---------- Utilidades generales ---------- */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.contenedor {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+/* ---------- Botones ---------- */
+.boton {
+  display: inline-block;
+  padding: 12px 28px;
+  border: none;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.boton-primario {
+  background: var(--degradado-nexo);
+  color: var(--color-blanco);
+  box-shadow: var(--sombra-fuerte);
+}
+
+.boton-primario:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(233, 64, 87, 0.35);
+}
+
+.boton-secundario {
+  background: transparent;
+  color: var(--color-rojo);
+  border: 2px solid var(--color-rojo);
+}
+
+.boton-secundario:hover {
+  background: var(--color-rojo);
+  color: var(--color-blanco);
+}
+
+.boton-pequeno {
+  padding: 8px 16px;
+  font-size: 0.9rem;
+}
+
+.boton-bloque {
+  width: 100%;
+}
+
+/* =========================================================
+   HEADER Y NAVEGACIÓN
+   ========================================================= */
+header.encabezado {
+  background: var(--color-blanco);
+  box-shadow: var(--sombra-suave);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.barra-navegacion {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 16px 0;
+}
+
+.menu-principal {
+  justify-self: center;
+}
+
+.botones-encabezado {
+  justify-self: end;
+}
+
+.logo-nexo {
+  font-size: 1.8rem;
+  font-weight: 800;
+  background: var(--degradado-nexo);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.menu-principal {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+.menu-principal a {
+  font-weight: 600;
+  color: var(--color-gris-oscuro);
+  transition: color 0.2s ease;
+}
+
+.menu-principal a:hover,
+.menu-principal a.activo {
+  color: var(--color-rojo);
+}
+
+.botones-encabezado {
+  display: flex;
+  gap: 12px;
+}
+
+.menu-principal li,
+.botones-encabezado li {
+  list-style: none;
+}
+
+.enlace-privado,
+.enlace-invitado {
+  display: none;
+}
+
+.boton-menu-movil {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: var(--color-rojo);
+}
+
+/* =========================================================
+   SECCIÓN PRINCIPAL (HERO) - index.html
+   ========================================================= */
+/* ---------- Hero propio de NEXO: "mapa de conexión" ----------
+   Firma visual: en vez del típico bloque centrado con degradado
+   de fondo, NEXO muestra literalmente su concepto (nodos que se
+   conectan) junto al texto. El degradado se aplica a sangre
+   completa con un pseudo-elemento, así el contenido puede
+   quedar centrado en un ancho máximo sin necesitar un div extra.
+------------------------------------------------------------- */
+.seccion-hero {
+  position: relative;
+  z-index: 0;
+  padding: 90px 0 140px 0;
+  color: var(--color-blanco);
+  clip-path: polygon(0 0, 100% 0, 100% 88%, 0% 100%);
+}
+
+.seccion-hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  height: 100%;
+  background: var(--degradado-nexo);
+  z-index: -1;
+}
+
+.hero-texto {
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.botones-hero {
+  justify-content: center;
+}
+
+.etiqueta-hero {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 6px 14px;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+
+.etiqueta-hero::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-blanco);
+}
+
+.hero-texto hgroup h1 {
+  font-size: 3.2rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.hero-texto .lema {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 18px;
+  opacity: 0.95;
+}
+
+.hero-texto p {
+  max-width: 480px;
+  margin: 0 auto 28px auto;
+  font-size: 1.02rem;
+}
+
+.botones-hero {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.seccion-hero .boton-secundario {
+  color: var(--color-blanco);
+  border-color: var(--color-blanco);
+}
+
+.seccion-hero .boton-secundario:hover {
+  background: var(--color-blanco);
+  color: var(--color-rojo);
+}
+
+/* ---------- Sección "cómo funciona" ---------- */
+.seccion-como-funciona {
+  padding: 60px 0;
+  text-align: center;
+}
+
+.seccion-como-funciona h2 {
+  font-size: 2rem;
+  margin-bottom: 40px;
+  color: var(--color-negro);
+}
+
+.pasos {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  list-style: none;
+  counter-reset: paso;
+}
+
+.pasos li {
+  background: var(--color-blanco);
+  padding: 28px 16px;
+  border-radius: var(--borde-redondo);
+  box-shadow: var(--sombra-suave);
+  transition: transform 0.2s ease;
+}
+
+.pasos li:hover {
+  transform: translateY(-6px);
+}
+
+.numero-paso {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--degradado-nexo);
+  color: var(--color-blanco);
+  font-weight: 700;
+  margin: 0 auto 14px auto;
+}
+
+.pasos h3 {
+  margin-bottom: 8px;
+  font-size: 1.1rem;
+}
+
+.pasos p {
+  font-size: 0.9rem;
+  color: var(--color-gris-oscuro);
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+footer.pie-pagina {
+  background: var(--color-negro);
+  color: var(--color-blanco);
+  padding: 30px 0;
+  text-align: center;
+  margin-top: 60px;
+}
+
+footer.pie-pagina .logo-nexo {
+  -webkit-text-fill-color: var(--color-blanco);
+  color: var(--color-blanco);
+  background: none;
+}
+
+footer.pie-pagina p {
+  font-size: 0.85rem;
+  margin-top: 8px;
+  color: #cccccc;
+}
+
+.enlaces-pie {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 10px;
+}
+
+.enlaces-pie a:hover {
+  color: var(--color-coral);
+}
+
+/* =========================================================
+   FORMULARIOS (login, registro, perfil)
+   ========================================================= */
+.seccion-formulario {
+  display: flex;
+  justify-content: center;
+  padding: 60px 16px;
+}
+
+.tarjeta-formulario {
+  background: var(--color-blanco);
+  padding: 40px;
+  border-radius: var(--borde-redondo);
+  box-shadow: var(--sombra-suave);
+  width: 100%;
+  max-width: 420px;
+}
+
+.tarjeta-formulario .logo-nexo {
+  display: block;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.tarjeta-formulario h1 {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 24px;
+  color: var(--color-negro);
+}
+
+.campo-formulario {
+  margin-bottom: 18px;
+}
+
+.campo-formulario label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 6px;
+  font-size: 0.9rem;
+}
+
+.campo-formulario input,
+.campo-formulario select,
+.campo-formulario textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  transition: border-color 0.2s ease;
+}
+
+.campo-formulario input:focus,
+.campo-formulario select:focus,
+.campo-formulario textarea:focus {
+  outline: none;
+  border-color: var(--color-rojo);
+}
+
+.mensaje-error {
+  color: var(--color-rojo);
+  font-size: 0.8rem;
+  margin-top: 4px;
+  display: none;
+}
+
+.mensaje-confirmacion {
+  background: #e6f9ee;
+  color: #1a8f4f;
+  padding: 12px 16px;
+  border-radius: 10px;
+  text-align: center;
+  margin-bottom: 18px;
+  font-weight: 600;
+  display: none;
+}
+
+.enlace-alterno {
+  text-align: center;
+  margin-top: 18px;
+  font-size: 0.9rem;
+}
+
+.enlace-alterno a {
+  color: var(--color-rojo);
+  font-weight: 600;
+}
+
+/* Fila de dos columnas dentro de formularios */
+.fila-doble {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+/* Casillas de intereses (checkbox) */
+.grupo-intereses {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.opcion-interes {
+  background: var(--color-gris-claro);
+  padding: 8px 14px;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.opcion-interes input {
+  width: auto;
+}
+
+/* =========================================================
+   PÁGINAS INTERNAS (main con navegación lateral/superior)
+   ========================================================= */
+main.contenido-interno {
+  padding: 40px 0 60px 0;
+}
+
+main.contenido-interno h1 {
+  font-size: 1.9rem;
+  margin-bottom: 6px;
+}
+
+.subtitulo-pagina {
+  color: var(--color-gris-oscuro);
+  margin-bottom: 30px;
+}
+
+/* =========================================================
+   TÉRMINOS Y CONDICIONES (terminos.html)
+   ========================================================= */
+.seccion-legal {
+  max-width: 760px;
+}
+
+.seccion-legal article {
+  margin-bottom: 34px;
+}
+
+.seccion-legal h2 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: var(--color-rojo);
+}
+
+.seccion-legal p {
+  margin-bottom: 10px;
+  color: var(--color-gris-oscuro);
+}
+
+.seccion-legal ul {
+  margin-left: 4px;
+}
+
+.seccion-legal li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 8px;
+  color: var(--color-gris-oscuro);
+}
+
+.seccion-legal li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--color-coral);
+  font-weight: 700;
+}
+
+.seccion-legal code {
+  background: var(--color-gris-claro);
+  padding: 2px 6px;
+  border-radius: 6px;
+  font-size: 0.9em;
+}
+
+/* =========================================================
+   TARJETAS DE PERFIL (amigos.html)
+   ========================================================= */
+.lista-perfiles {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.tarjeta-perfil {
+  background: var(--color-blanco);
+  border-radius: var(--borde-redondo);
+  overflow: hidden;
+  box-shadow: var(--sombra-suave);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.tarjeta-perfil:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--sombra-fuerte);
+}
+
+.tarjeta-perfil img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.info-tarjeta {
+  padding: 18px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.info-tarjeta h2 {
+  font-size: 1.2rem;
+  margin-bottom: 2px;
+}
+
+.datos-secundarios {
+  font-size: 0.85rem;
+  color: var(--color-gris-oscuro);
+  margin-bottom: 10px;
+}
+
+.descripcion-perfil {
+  font-size: 0.9rem;
+  margin-bottom: 12px;
+}
+
+.lista-etiquetas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.lista-etiquetas li {
+  background: var(--color-gris-claro);
+  padding: 4px 10px;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  color: var(--color-gris-oscuro);
+}
+
+.acciones-tarjeta {
+  display: flex;
+  gap: 8px;
+  margin-top: auto;
+  flex-wrap: wrap;
+}
+
+.boton-anadir {
+  background: var(--degradado-nexo);
+  color: var(--color-blanco);
+}
+
+.boton-anadir.enviado {
+  background: #b6b6b6;
+  cursor: default;
+}
+
+.boton-pasar {
+  background: var(--color-gris-claro);
+  color: var(--color-gris-oscuro);
+}
+
+.boton-mensaje {
+  background: transparent;
+  border: 2px solid var(--color-rojo);
+  color: var(--color-rojo);
+}
+
+/* ---------- Sección "Mis amigos" ---------- */
+.seccion-mis-amigos {
+  margin-top: 60px;
+}
+
+.lista-mis-amigos {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.tarjeta-amigo {
+  background: var(--color-blanco);
+  border-radius: var(--borde-redondo);
+  padding: 16px;
+  text-align: center;
+  box-shadow: var(--sombra-suave);
+}
+
+.tarjeta-amigo img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 10px auto;
+}
+
+.tarjeta-amigo h3 {
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.boton-eliminar {
+  background: none;
+  border: none;
+  color: var(--color-rojo);
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.aviso-vacio {
+  text-align: center;
+  color: var(--color-gris-oscuro);
+  padding: 30px;
+  background: var(--color-blanco);
+  border-radius: var(--borde-redondo);
+}
+
+/* =========================================================
+   PERFIL PROPIO (perfil.html)
+   ========================================================= */
+.contenedor-perfil {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 30px;
+  align-items: start;
+}
+
+.vista-previa-perfil {
+  background: var(--color-blanco);
+  border-radius: var(--borde-redondo);
+  box-shadow: var(--sombra-suave);
+  overflow: hidden;
+  position: sticky;
+  top: 100px;
+}
+
+.vista-previa-perfil img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+}
+
+.vista-previa-perfil .info-tarjeta h2 {
+  font-size: 1.4rem;
+}
+
+/* =========================================================
+   CHAT (chat.html)
+   ========================================================= */
+.contenedor-chat {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 20px;
+  background: var(--color-blanco);
+  border-radius: var(--borde-redondo);
+  box-shadow: var(--sombra-suave);
+  overflow: hidden;
+  min-height: 520px;
+}
+
+.lista-chats {
+  border-right: 1px solid #eee;
+  overflow-y: auto;
+  max-height: 600px;
+}
+
+.chat-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  cursor: pointer;
+  border-bottom: 1px solid #f2f2f2;
+  transition: background 0.2s ease;
+}
+
+.chat-item:hover,
+.chat-item.chat-activo {
+  background: var(--color-gris-claro);
+}
+
+.chat-item img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.datos-chat-item {
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.datos-chat-item h3 {
+  font-size: 0.95rem;
+}
+
+.datos-chat-item p {
+  font-size: 0.8rem;
+  color: var(--color-gris-oscuro);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hora-chat {
+  font-size: 0.7rem;
+  color: #aaaaaa;
+}
+
+.ventana-chat {
+  display: flex;
+  flex-direction: column;
+  height: 600px;
+}
+
+.cabecera-chat {
+  padding: 16px 20px;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.cabecera-chat img {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.historial-mensajes {
+  flex-grow: 1;
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.mensaje {
+  max-width: 65%;
+  padding: 10px 16px;
+  border-radius: 16px;
+  font-size: 0.9rem;
+}
+
+.mensaje-recibido {
+  align-self: flex-start;
+  background: var(--color-gris-claro);
+}
+
+.mensaje-enviado {
+  align-self: flex-end;
+  background: var(--degradado-nexo);
+  color: var(--color-blanco);
+}
+
+.formulario-enviar-mensaje {
+  display: flex;
+  gap: 10px;
+  padding: 16px 20px;
+  border-top: 1px solid #eee;
+}
+
+.formulario-enviar-mensaje input {
+  flex-grow: 1;
+  padding: 12px 16px;
+  border-radius: 50px;
+  border: 2px solid #e0e0e0;
+}
+
+.formulario-enviar-mensaje input:focus {
+  outline: none;
+  border-color: var(--color-rojo);
+}
+
+.sin-chat-seleccionado {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--color-gris-oscuro);
+  text-align: center;
+  padding: 40px;
+}
